@@ -1,11 +1,14 @@
 <template>
   <div class="text-center">
-    <h1>ToList (Done: {{ doneToDoLists }})</h1>
+    <h1>ToList (Done: {{ doneToDoListsCount }})</h1>
     <ul>
       <li v-for="list in todoLists" :key="list.id">
-        {{ list.text }} ({{ list.done ? "Done" : "Not Done" }})
+        <a href="" @click.prevent="selectTodoId = list.id">
+          {{ list.text }} ({{ list.done ? "Done" : "Not Done" }})
+        </a>
       </li>
     </ul>
+    <p v-if="selectedTodo">selected TODO: {{ selectedTodo.text }}</p>
   </div>
 </template>
 
@@ -13,14 +16,19 @@
 export default {
   name: "TodoList",
   data() {
-    return {};
+    return {
+      selectTodoId: "",
+    };
   },
   computed: {
     todoLists() {
       return this.$store.getters.todoLists;
     },
-    doneToDoLists() {
-      return this.$store.getters.doneTodos;
+    doneToDoListsCount() {
+      return this.$store.getters.doneTodosCount;
+    },
+    selectedTodo() {
+      return this.$store.getters.todo(this.selectTodoId);
     },
   },
   methods: {},

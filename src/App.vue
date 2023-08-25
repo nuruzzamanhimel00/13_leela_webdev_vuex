@@ -2,7 +2,7 @@
   <div>
     <counter-component></counter-component>
     <todo-list></todo-list>
-    <p class="text-center">Done Tod list: {{ doneToDoLists }}</p>
+    <p class="text-center">Done Tod list: {{ doneToDoListsCount }}</p>
   </div>
 </template>
 
@@ -13,8 +13,8 @@ export default {
   name: "App",
   components: { CounterComponent, TodoList },
   computed: {
-    doneToDoLists() {
-      return this.$store.getters.doneTodos;
+    doneToDoListsCount() {
+      return this.$store.getters.doneTodosCount;
     },
   },
 };

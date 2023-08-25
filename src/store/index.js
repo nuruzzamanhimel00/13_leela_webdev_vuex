@@ -13,10 +13,15 @@ const store = createStore({
     ],
   },
   getters: {
+    todo: (state) => (id) => {
+      if (id != "") {
+        return state.toDoList.find((toDo) => toDo.id === id);
+      }
+    },
     todoLists(state) {
       return state.toDoList;
     },
-    doneTodos(state, getters) {
+    doneTodosCount(state, getters) {
       return getters.todoLists.filter((todo) => todo.done).length;
     },
   },

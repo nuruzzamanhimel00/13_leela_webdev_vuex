@@ -18,8 +18,8 @@ export default {
     count() {
       return this.$store.state.count;
     },
-    doneToDoLists() {
-      return this.$store.getters.doneTodos;
+    doneToDoListsCount() {
+      return this.$store.getters.doneTodosCount;
     },
   },
   methods: {
