@@ -6,8 +6,22 @@ const store = createStore({
     count: 100,
   },
   getters: {},
-  mutations: {},
-  actions: {},
+  mutations: {
+    increment(state, payload) {
+      state.count += payload;
+    },
+    decrement(state, payload) {
+      state.count -= payload;
+    },
+  },
+  actions: {
+    increment(context, payload) {
+      context.commit("increment", payload);
+    },
+    decrement(context, payload) {
+      context.commit("decrement", payload);
+    },
+  },
 });
 
 export default store;
