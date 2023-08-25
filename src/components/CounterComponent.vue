@@ -5,6 +5,8 @@
 
     <button @click="incrementHandler">Increment</button>
     <button @click="decrementHandler">Decrement</button>
+    <br />
+    <button @click="incrementData">INCREMENT H!</button>
   </div>
 </template>
 
@@ -28,6 +30,12 @@ export default {
     },
     decrementHandler() {
       this.$store.dispatch("decrement", 1);
+    },
+    incrementData() {
+      this.$store.dispatch("actionB", 1).then((response) => {
+        console.log("success");
+        console.log(response);
+      });
     },
   },
 };

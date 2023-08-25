@@ -40,6 +40,20 @@ const store = createStore({
     decrement(context, payload) {
       context.commit("decrement", payload);
     },
+    actionA(context, payload) {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          context.commit("increment", payload);
+
+          resolve("Increment daone!!");
+        }, 1000);
+      });
+    },
+    actionB(context, payload) {
+      return context.dispatch("actionA", payload).then((res) => {
+        return res;
+      });
+    },
   },
 });
 
