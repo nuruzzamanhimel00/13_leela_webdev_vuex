@@ -18,6 +18,9 @@ export default {
     count() {
       return this.$store.state.count;
     },
+    doneToDoLists() {
+      return this.$store.getters.doneTodos;
+    },
   },
   methods: {
     incrementHandler() {
