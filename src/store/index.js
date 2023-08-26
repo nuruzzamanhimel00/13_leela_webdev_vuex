@@ -14,6 +14,7 @@ const store = createStore({
   },
   getters: {
     todo: (state) => (id) => {
+      console.log("id", id);
       if (id != "") {
         return state.toDoList.find((toDo) => toDo.id === id);
       }
