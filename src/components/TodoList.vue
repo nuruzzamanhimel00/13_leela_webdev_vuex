@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "TodoList",
   data() {
@@ -21,12 +22,16 @@ export default {
     };
   },
   computed: {
-    todoLists() {
-      return this.$store.getters.todoLists;
-    },
-    doneToDoListsCount() {
-      return this.$store.getters.doneTodosCount;
-    },
+    // todoLists() {
+    //   return this.$store.getters.todoLists;
+    // },
+    ...mapGetters({
+      doneToDoListsCount: "doneToDoListsCount",
+      todoLists: "todoLists",
+    }),
+    // doneToDoListsCount() {
+    //   return this.$store.getters.doneTodosCount;
+    // },
     selectedTodo() {
       return this.$store.getters.todo(this.selectTodoId);
     },

@@ -11,18 +11,26 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from "vuex";
+
 export default {
   name: "CounterComponent",
   date() {
     return {};
   },
   computed: {
-    count() {
-      return this.$store.state.count;
-    },
-    doneToDoListsCount() {
-      return this.$store.getters.doneTodosCount;
-    },
+    ...mapState({
+      count: (state) => state.count,
+    }),
+    // count() {
+    //   return this.$store.state.count;
+    // },
+    ...mapGetters({
+      doneToDoListsCount: "doneToDoListsCount",
+    }),
+    // doneToDoListsCount() {
+    //   return this.$store.getters.doneTodosCount;
+    // },
   },
   methods: {
     incrementHandler() {
