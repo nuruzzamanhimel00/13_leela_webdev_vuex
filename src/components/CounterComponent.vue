@@ -19,13 +19,13 @@ export default {
     return {};
   },
   computed: {
-    ...mapState({
+    ...mapState("count", {
       count: (state) => state.count,
     }),
     // count() {
     //   return this.$store.state.count;
     // },
-    ...mapGetters({
+    ...mapGetters("count", {
       doneToDoListsCount: "doneTodosCount",
     }),
     // doneToDoListsCount() {
@@ -33,7 +33,7 @@ export default {
     // },
   },
   methods: {
-    ...mapActions({
+    ...mapActions("count", {
       increment: "increment",
       decrement: "decrement",
       actionB: "actionB",

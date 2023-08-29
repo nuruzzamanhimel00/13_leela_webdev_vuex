@@ -32,7 +32,7 @@ export default {
     // todoLists() {
     //   return this.$store.getters.todoLists;
     // },
-    ...mapGetters({
+    ...mapGetters("todolist", {
       doneToDoListsCount: "doneTodosCount",
       todoLists: "todoLists",
       selectedTodo: "todo",
