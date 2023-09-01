@@ -4,6 +4,7 @@
     <h1>Usser Details</h1>
     <p>Name: {{ userDetails.name }}</p>
     <p>Name: {{ userDetails.age }}</p>
+    <button @click="changeUsername">Change Name</button>
   </div>
 </template>
 
@@ -31,9 +32,14 @@ export default {
       userDetails.age = "Update 20";
     }, 2000);
 
+    function changeUsername() {
+      userDetails.name = "lorem ipsum";
+    }
+
     return {
       userName: userName,
       userDetails: userDetails,
+      changeUsername: changeUsername,
     };
   },
 };
