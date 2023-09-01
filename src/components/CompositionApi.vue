@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { reactive, ref } from "vue";
+import { reactive, ref, isRef, isReactive } from "vue";
 
 export default {
   setup() {
@@ -19,9 +19,12 @@ export default {
       age: 29,
     });
 
+    console.log(isRef(userName));
+    console.log(isReactive(userDetails));
+
     setTimeout(() => {
       console.log("set timeout is called");
-      console.log(userName, userDetails);
+      //   console.log(userName, userDetails);
       userName.value = "My name is Leela";
 
       userDetails.name = "Update Himel";
@@ -30,7 +33,7 @@ export default {
 
     return {
       userName: userName,
-      userDetails,
+      userDetails: userDetails,
     };
   },
 };
