@@ -15,13 +15,19 @@
       <input type="text" placeholder="first name" v-model="firstName" />
       <input type="text" placeholder="last name" v-model="lastName" />
     </div>
+    <user-details-comp :user-details="userDetails" />
   </div>
 </template>
 
 <script>
 import { reactive, ref, isRef, isReactive, computed, watch } from "vue";
 
+import UserDetailsComp from "./UserDetailsComp.vue";
+
 export default {
+  components: {
+    UserDetailsComp,
+  },
   setup() {
     let userName = ref("My name is Himel");
 
