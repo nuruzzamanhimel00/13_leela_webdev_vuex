@@ -9,6 +9,8 @@
     <hr />
     <h1>Computed property</h1>
     <h3>FUll name is: {{ fullName }}</h3>
+    <h4>Age:{{ age }}</h4>
+    <button @click.prevent="changeAgeHandler">Change Age</button>
     <div>
       <input type="text" placeholder="first name" v-model="firstName" />
       <input type="text" placeholder="last name" v-model="lastName" />
@@ -17,7 +19,7 @@
 </template>
 
 <script>
-import { reactive, ref, isRef, isReactive, computed } from "vue";
+import { reactive, ref, isRef, isReactive, computed, watch } from "vue";
 
 export default {
   setup() {
@@ -29,10 +31,28 @@ export default {
     });
     let firstName = ref("");
     let lastName = ref("");
-
+    let age = ref(30);
+    // ###################### Watch ###################################
+    watch([age, firstName], (oldValue, newValue) => {
+      console.log(oldValue, newValue);
+    });
+    watch(
+      userDetails,
+      (value) => {
+        console.log("watch", value);
+      },
+      {
+        deep: true,
+      }
+    );
+    // ###################### Watch ###################################
     const fullName = computed(() => {
       return firstName.value + " " + lastName.value;
     });
+
+    function changeAgeHandler() {
+      age.value = age.value + 1;
+    }
 
     console.log(isRef(userName));
     console.log(isReactive(userDetails));
@@ -57,6 +77,8 @@ export default {
       firstName: firstName,
       lastName: lastName,
       fullName: fullName,
+      age: age,
+      changeAgeHandler: changeAgeHandler,
     };
   },
 };
