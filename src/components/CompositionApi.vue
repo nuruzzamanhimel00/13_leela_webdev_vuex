@@ -1,15 +1,23 @@
 <template>
   <div class="text-center">
+    <h1>----------------Composition Api -----------------------</h1>
     <h1>My name is: {{ userName }}</h1>
     <h1>Usser Details</h1>
     <p>Name: {{ userDetails.name }}</p>
     <p>Name: {{ userDetails.age }}</p>
     <button @click="changeUsername">Change Name</button>
+    <hr />
+    <h1>Computed property</h1>
+    <h3>FUll name is: {{ fullName }}</h3>
+    <div>
+      <input type="text" placeholder="first name" v-model="firstName" />
+      <input type="text" placeholder="last name" v-model="lastName" />
+    </div>
   </div>
 </template>
 
 <script>
-import { reactive, ref, isRef, isReactive } from "vue";
+import { reactive, ref, isRef, isReactive, computed } from "vue";
 
 export default {
   setup() {
@@ -18,6 +26,12 @@ export default {
     let userDetails = reactive({
       name: " Himel",
       age: 29,
+    });
+    let firstName = ref("");
+    let lastName = ref("");
+
+    const fullName = computed(() => {
+      return firstName.value + " " + lastName.value;
     });
 
     console.log(isRef(userName));
@@ -40,6 +54,9 @@ export default {
       userName: userName,
       userDetails: userDetails,
       changeUsername: changeUsername,
+      firstName: firstName,
+      lastName: lastName,
+      fullName: fullName,
     };
   },
 };
